@@ -80,7 +80,7 @@ class QLearningAgent(ReinforcementAgent):
           you should return None.
         """
         "*** YOUR CODE HERE ***"
-        actions = self.getAction(state)
+        actions = self.getLegalActions(state)
         if len(actions) == 0:
             return None
         f = lambda x: self.getQValue(state, x)
@@ -103,10 +103,11 @@ class QLearningAgent(ReinforcementAgent):
         legalActions = self.getLegalActions(state)
         action = None
         "*** YOUR CODE HERE ***"
-
+        # print('legalActions  ----> ', legalActions)
         if (util.flipCoin(self.epsilon)):
             action = random.choice(legalActions)
         else:
+
             action = self.computeActionFromQValues(state)
         # util.raiseNotDefined()
 
